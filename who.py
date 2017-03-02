@@ -9,13 +9,15 @@ def main():
             
             cfg = {
                 "page_id" : "100001816035196",
-                "access_token" : "EAACEdEose0cBAISqMl4CEEyRNSZC9cSKeN5ztVdZBz8ymhoJOZClloqtZAxdXXW7u3TI6oy7YOIV5ftzE3q33Hym3YllW651YxqIOJNaNLVDNJW0ZCqT0sqVeokg55gZBgGRdZCD43kDkreNZCqb8StYYdbZCZB6aNaxamahy5SR9UEgZDZD"
+                "access_token" : "EAACEdEose0cBAIkKwamZChvkZA3N5lqr1diRpShim1Np8wovdig8ZC1v51U5eaZB3rOZAqAlbfpj5Ci46bqV7cftDHO3ZAr7mjAvZCMOEGZAn510JfZCN4EmbxO5npau1rTyQBlZB5m9DmiBsS5QrNVqgD6I0LTdz0DRSJCCt1bZAZCTVFZBYptWejiUH9Hi7PxznAtQZD"
                 }
 
             api = get_api(cfg)
             status = api.put_photo(image=open('user_photo.jpg','rb'))
-            posts = api.get_connections(id='me', connection_names='posts')
-            print posts
+            friends = api.get_all_connections(id='me', connection_name='friends')
+
+            print list(friends)
+
 def get_api(cfg):
     graph = facebook.GraphAPI(cfg['access_token'])
     return graph

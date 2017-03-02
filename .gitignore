@@ -1,0 +1,4 @@
+*.jpg
+activate/*
+src/*
+facebookenv/*
